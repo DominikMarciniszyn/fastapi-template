@@ -11,3 +11,8 @@ tasks:
   deploy:
     cmds:
       - echo "Deploying..."
+  setupDevEnv:
+    desc: Run commands needed to develop application locally
+    cmds:
+      - poetry install
+      - pre-commit install --install-hooks -t pre-commit -t commit-msg
