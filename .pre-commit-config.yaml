@@ -15,21 +15,19 @@ repos:
     hooks:
       - id: yamllint
 
-  - repo: https://github.com/psf/black
-    rev: 22.12.0
-    hooks:
-      - id: black
-        language_version: python3.12
-
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.5.5
     hooks:
       - id: forbid-crlf
 
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.0.253'
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.7
     hooks:
+      # Run the linter.
       - id: ruff
+        args: [--fix]
+      # Run the formatter.
+      - id: ruff-format
 
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.18.0
@@ -54,5 +52,5 @@ repos:
         # (until the dependencies are changed)
         entry: bash bin/run-mypy.sh app env/local.env
         language: python
-        files: "^(app|tests)/"
+        files: "^(src|app|tests)/"
         pass_filenames: false
