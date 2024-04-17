@@ -11,6 +11,7 @@ python = "^3.12"
 [tool.poetry.group.dev.dependencies]
 autopep8 = "^2.1.0"
 mypy = "^1.9.0"
+ruff = "^0.3.7"
 
 [build-system]
 requires = ["poetry-core"]
@@ -28,13 +29,13 @@ lint.select = [
     "B",  # flake8-bugbear
     "ANN" # flake8-annotations
 ]
-lint.ignore = [
-    "B010",  # Ignore "fixme" comments
-    "W605",  # pointless-string-statement
-    "ANN101", # Type annotation for self,
-    "ANN102", # Type annotation for cls,
-    "ANN401" # Type annotation (ANY) is Disallowed
-]
+# lint.ignore = [
+#     "B010",  # Ignore "fixme" comments
+#     "W605",  # pointless-string-statement
+#     "ANN101", # Type annotation for self,
+#     "ANN102", # Type annotation for cls,
+#     "ANN401" # Type annotation (ANY) is Disallowed
+# ]
 lint.exclude=[
     "**/test/**/*.py"
 ]
