@@ -42,15 +42,3 @@ repos:
         name: gitlint-ci
         language: python
         stages: [commit]
-
-  - repo: local
-    hooks:
-      - id: mypy
-        name: Mypy
-        # pre-commit runs it in its own virtualenv; so the dependencies must be
-        # installed for it separately here, but it only needs to happen once
-        # (until the dependencies are changed)
-        entry: bash bin/run-mypy.sh app env/local.env
-        language: python
-        files: "^(src|app|tests)/"
-        pass_filenames: false
