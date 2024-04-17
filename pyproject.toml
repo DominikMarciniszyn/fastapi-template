@@ -8,6 +8,10 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.1.0"
+mypy = "^1.9.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -25,13 +29,8 @@ lint.select = [
     "ANN" # flake8-annotations
 ]
 lint.ignore = [
-    "E501",  # line too long, handled by black
     "B010",  # Ignore "fixme" comments
-    "D100",  # missing-module-docstring
-    "D101",  # missing-class-docstring
-    "D102",  # missing-function-docstring
     "W605",  # pointless-string-statement
-    "C901",  # too complex function / method
     "ANN101", # Type annotation for self,
     "ANN102", # Type annotation for cls,
     "ANN401" # Type annotation (ANY) is Disallowed
