@@ -18,9 +18,44 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "**/test/**/*.py",
+]
+
 line-length = 120
 indent-width = 4
-lint.select = [
+
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
     "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
     "W",  # pycodestyle warnings
     "D",  # pydocstyle
@@ -34,27 +69,31 @@ lint.select = [
     "UP",
     "PL",
 ]
-lint.ignore = [
-    "D202" # No empty line after docstring
+ignore = [
+    "D202", # No empty line after docstring
+    "E402", # Module level import not at top of file
 ]
 
-lint.fixable = ["I", "D", "F", "E", "W", "UP", "PL"]
-lint.unfixable = []
+fixable = ["I", "D", "F", "E", "W", "UP", "PL"]
+unfixable = []
 
-lint.exclude=[
-    "**/test/**/*.py"
-]
-lint.extend-safe-fixes = [ "ANN201" ]
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+extend-safe-fixes = [ "ANN201" ]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 docstring-code-format = true
+docstring-code-line-length = "dynamic"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+exclude = ["*.pyi"]
 
 [tool.ruff.lint.isort]
 order-by-type = true
