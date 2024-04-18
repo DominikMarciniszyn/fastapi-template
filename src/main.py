@@ -2,11 +2,8 @@
 
 from fastapi import FastAPI
 
+from .routers.health import health
+
 app = FastAPI()
 
-
-@app.get("/health")
-async def healthcheck() -> dict[str, str]:
-    """Health check endpoint."""
-
-    return {"status": "ok"}
+app.include_router(health.router)

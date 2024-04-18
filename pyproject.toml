@@ -78,6 +78,7 @@ select = [
 ignore = [
     "D202", # No empty line after docstring
     "E402", # Module level import not at top of file
+    "D104", # Missing docstring in public package
 ]
 
 fixable = ["I", "D", "F", "E", "W", "UP", "PL"]
