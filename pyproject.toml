@@ -1,0 +1,124 @@
+[tool.poetry]
+name = "fastapi-template"
+version = "0.1.0"
+description = "Fast API template project, very simple"
+authors = ["DominikMarciniszyn <dominik.marciniszyn@codetain.co>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.1"
+uvicorn = "^0.29.0"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.1.0"
+mypy = "^1.9.0"
+ruff = "^0.3.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "**/test/**/*.py",
+]
+
+line-length = 120
+indent-width = 4
+
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
+    "W",  # pycodestyle warnings
+    "D",  # pydocstyle
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "ANN", # flake8-annotations,
+    "C90", # flake8-complexity,
+    "N",
+    "UP",
+    "PL",
+]
+ignore = [
+    "D202", # No empty line after docstring
+    "E402", # Module level import not at top of file
+]
+
+fixable = ["I", "D", "F", "E", "W", "UP", "PL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+extend-safe-fixes = [ "ANN201" ]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+exclude = ["*.pyi"]
+
+[tool.ruff.lint.isort]
+order-by-type = true
+lines-between-types = 1
+relative-imports-order = "closest-to-furthest"
+extra-standard-library = ["typing"]
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+known-first-party = []
+
+[tool.mypy]
+python_version = "3.12"
+check_untyped_defs = true
+ignore_missing_imports = false
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = false

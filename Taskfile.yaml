@@ -1,0 +1,26 @@
+---
+version: "3"
+
+tasks:
+  build:
+    cmds:
+      - echo "Building..."
+  test:
+    cmds:
+      - echo "Testing..."
+  deploy:
+    cmds:
+      - echo "Deploying..."
+  ruff-check:
+    desc: Run Ruff check on the project.
+    cmds:
+      - ruff check
+  mypy-check:
+    desc: Run mypy check on the project.
+    cmds:
+      - mypy .
+  setupDevEnv:
+    desc: Run commands needed to develop application locally
+    cmds:
+      - poetry install
+      - pre-commit install --install-hooks -t pre-commit -t commit-msg
