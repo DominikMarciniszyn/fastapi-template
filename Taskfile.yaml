@@ -11,6 +11,10 @@ tasks:
   deploy:
     cmds:
       - echo "Deploying..."
+  ruff-check:
+    desc: Run Ruff check on the project.
+    cmds:
+      - ruff check
   setupDevEnv:
     desc: Run commands needed to develop application locally
     cmds:

@@ -23,24 +23,28 @@ indent-width = 4
 lint.select = [
     "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
     "W",  # pycodestyle warnings
+    "D",  # pydocstyle
     "F",  # pyflakes
     "I",  # isort
     "C",  # flake8-comprehensions
     "B",  # flake8-bugbear
-    "ANN" # flake8-annotations
+    "ANN", # flake8-annotations,
+    "C90", # flake8-complexity,
+    "N",
+    "UP",
+    "PL",
 ]
-# lint.ignore = [
-#     "B010",  # Ignore "fixme" comments
-#     "W605",  # pointless-string-statement
-#     "ANN101", # Type annotation for self,
-#     "ANN102", # Type annotation for cls,
-#     "ANN401" # Type annotation (ANY) is Disallowed
-# ]
+lint.ignore = [
+    "D202" # No empty line after docstring
+]
+
+lint.fixable = ["I", "D", "F", "E", "W", "UP", "PL"]
+lint.unfixable = []
+
 lint.exclude=[
     "**/test/**/*.py"
 ]
 lint.extend-safe-fixes = [ "ANN201" ]
-lint.unfixable = ["B"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402"]
@@ -66,14 +70,10 @@ section-order = [
 ]
 known-first-party = []
 
-[tool.ruff.mccabe]
-# Unlike Flake8, default to a complexity level of 10.
-max-complexity = 10
-
 [tool.mypy]
 python_version = "3.12"
 check_untyped_defs = true
-ignore_missing_imports = true
+ignore_missing_imports = false
 warn_unused_ignores = true
 warn_redundant_casts = true
 warn_unused_configs = true
