@@ -2,9 +2,10 @@
 version: "3"
 
 tasks:
-  build:
+  run-local:
+    desc: Run the application locally with reload flag.
     cmds:
-      - echo "Building..."
+      - poetry run uvicorn src.main:app --reload
   test:
     cmds:
       - echo "Testing..."

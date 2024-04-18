@@ -15,6 +15,10 @@ autopep8 = "^2.1.0"
 mypy = "^1.9.0"
 ruff = "^0.3.7"
 
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -74,6 +78,7 @@ select = [
 ignore = [
     "D202", # No empty line after docstring
     "E402", # Module level import not at top of file
+    "D104", # Missing docstring in public package
 ]
 
 fixable = ["I", "D", "F", "E", "W", "UP", "PL"]
