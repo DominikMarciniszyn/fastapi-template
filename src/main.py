@@ -1,7 +1,12 @@
 """Main module."""
 
+from fastapi import FastAPI
 
-def add(x: int, y: int) -> int:
-    """Add two numbers together."""
+app = FastAPI()
 
-    return x + y
+
+@app.get("/health")
+async def healthcheck() -> dict[str, str]:
+    """Health check endpoint."""
+
+    return {"status": "ok"}
